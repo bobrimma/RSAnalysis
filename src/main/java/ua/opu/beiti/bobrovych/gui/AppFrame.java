@@ -45,8 +45,8 @@ public class AppFrame {
 	}
 
 	private void initializeUI() {
-		JLabel label = new JLabel("Какой расчет выполнить?");
-		radioBtnHerst = new JRadioButton("коэффициент Херста");
+		JLabel label = new JLabel("РљР°РєРѕР№ СЂР°СЃС‡РµС‚ РІС‹РїРѕР»РЅРёС‚СЊ?");
+		radioBtnHerst = new JRadioButton("РљРѕСЌС„РёС†РёРµРЅС‚ РҐРµСЂСЃС‚Р°");
 		radioBtnHerst.setSelected(true);
 		radioBthVn = new JRadioButton("Vn");
 		ButtonGroup group = new ButtonGroup();
@@ -66,10 +66,10 @@ public class AppFrame {
 				GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(5,
 						5, 5, 5), 0, 0));
 
-		label = new JLabel("Файл исходных данных:");
+		label = new JLabel("Р¤Р°Р№Р» РёСЃС…РѕРґРЅС‹С… РґР°РЅРЅС‹С…:");
 		textFieldSourceFile = new JTextField();
 		textFieldSourceFile.setEditable(false);
-		btnChooseSource = new JButton("Обзор");
+		btnChooseSource = new JButton("РћР±Р·РѕСЂ");
 		btnChooseSource.addActionListener(new FileChooserButtonListener());
 		panel.add(label, new GridBagConstraints(0, GridBagConstraints.RELATIVE,
 				GridBagConstraints.RELATIVE, 1, 0, 0, GridBagConstraints.WEST,
@@ -82,10 +82,10 @@ public class AppFrame {
 				GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(5,
 						5, 5, 5), 0, 0));
 
-		label = new JLabel("Сохранить расчеты в файл:");
+		label = new JLabel("РЎРѕС…СЂР°РЅРёС‚СЊ СЂР°СЃС‡РµС‚С‹ РІ С„Р°Р№Р»:");
 		textFieldSaveToFile = new JTextField();
 		textFieldSaveToFile.setEditable(false);
-		btnChooseDestination = new JButton("Обзор");
+		btnChooseDestination = new JButton("РћР±Р·РѕСЂ");
 		btnChooseDestination.addActionListener(new FileChooserButtonListener());
 
 		panel.add(label, new GridBagConstraints(0, GridBagConstraints.RELATIVE,
@@ -99,16 +99,15 @@ public class AppFrame {
 				0, GridBagConstraints.WEST, GridBagConstraints.NONE,
 				new Insets(5, 5, 5, 5), 0, 0));
 
-		label = new JLabel(
-				"Внимание! Если файл уже существует,то его содержимое будет перезаписано.");
+		label = new JLabel("Р’РЅРёРјР°РЅРёРµ! Р•СЃР»Рё С„Р°Р№Р» СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚, С‚Рѕ РµРіРѕ СЃРѕРґРµСЂР¶РёРјРѕРµ Р±СѓРґРµС‚ РїРµСЂРµР·Р°РїРёСЃР°РЅРѕ.");
 
 		panel.add(label, new GridBagConstraints(0, GridBagConstraints.RELATIVE,
 				GridBagConstraints.REMAINDER, 1, 0, 0, GridBagConstraints.WEST,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 
-		JButton btnFinish = new JButton("Готово");
+		JButton btnFinish = new JButton("Р“РѕС‚РѕРІРѕ");
 		btnFinish.addActionListener(new FinishButtonListener());
-		JButton btnClean = new JButton("Очистить");
+		JButton btnClean = new JButton("РћС‡РёСЃС‚РёС‚СЊ");
 		btnClean.addActionListener(new ClearButtonListener());
 		panel.add(btnClean, new GridBagConstraints(4, 6, 1, 1, 0, 0,
 				GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(5,
@@ -117,7 +116,7 @@ public class AppFrame {
 				GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(5,
 						5, 5, 5), 0, 0));
 
-		frame.setTitle("R/S анализ v.1.0.0");
+		frame.setTitle("R/S Р°РЅР°Р»РёР· v.1.0.0");
 		frame.add(panel);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.pack();
@@ -177,10 +176,10 @@ public class AppFrame {
 				ExcelParser jp = new ExcelParser();
 				if (radioBtnHerst.isSelected()) {
 					try {
-						jp.parseExcel(textFieldSourceFile.getText());
+						jp.parseExcelForHerst(textFieldSourceFile.getText());
 						HerstCounter herst = new HerstCounter();
 
-						herst.createStatisticsSheet("Накопленная статистика по показателю - коэффициент Херста");
+						herst.createStatisticsSheet("РќР°РєРѕРїР»РµРЅРЅР°СЏ СЃС‚Р°С‚РёСЃС‚РёРєР° РїРѕ РїРѕРєР°Р·Р°С‚РµР»СЋ - РєРѕСЌС„С„РёС†РёРµРЅС‚ РҐРµСЂСЃС‚Р°");
 						for (int i = 0; i < jp.getYears().size(); i++) {
 							herst.countHerst(jp.getInputData()[i], jp
 									.getYears().get(i));
@@ -188,28 +187,28 @@ public class AppFrame {
 						herst.saveWorkbook(textFieldSaveToFile.getText());
 
 						JOptionPane.showMessageDialog(frame,
-								"Расчет успешно выполнен." + "\n"
-										+ "Результаты сохранены в файле: "
+								"Р Р°СЃС‡РµС‚ СѓСЃРїРµС€РЅРѕ РІС‹РїРѕР»РЅРµРЅ." + "\n"
+										+ "Р РµР·СѓР»СЊС‚Р°С‚С‹ СЃРѕС…СЂР°РЅРµРЅС‹ РІ С„Р°Р№Р»Рµ: "
 										+ "\n" + textFieldSaveToFile.getText());
 						resetFields();
 					} catch (NotEnoughtDataException e) {
 						JOptionPane.showMessageDialog(frame, e.getMessage(),
-								"Ошибка в исходных данных.",
+								"РћС€РёР±РєР° РІ РёСЃС…РѕРґРЅС‹С… РґР°РЅРЅС‹С….",
 								JOptionPane.ERROR_MESSAGE);
 					} catch (TooMuchDataException e) {
 						JOptionPane.showMessageDialog(frame, e.getMessage(),
-								"Ошибка в исходных данных.",
+								"РћС€РёР±РєР° РІ РёСЃС…РѕРґРЅС‹С… РґР°РЅРЅС‹С….",
 								JOptionPane.ERROR_MESSAGE);
 					} catch (BlankCellException e) {
 						JOptionPane.showMessageDialog(frame, e.getMessage(),
-								"Ошибка в исходных данных.",
+								"РћС€РёР±РєР° РІ РёСЃС…РѕРґРЅС‹С… РґР°РЅРЅС‹С….",
 								JOptionPane.ERROR_MESSAGE);
 					}
 				} else {
 					try {
 						jp.parseExcelForVn(textFieldSourceFile.getText());
 						VNCounter vn = new VNCounter();
-						vn.createStatisticsSheet("Накопленная статистика по показателю - Vn");
+						vn.createStatisticsSheet("РќР°РєРѕРїР»РµРЅРЅР°СЏ СЃС‚Р°С‚РёСЃС‚РёРєР° РїРѕ РїРѕРєР°Р·Р°С‚РµР»СЋ - Vn");
 						for (int i = 0; i < jp.getYears().size(); i++) {
 							vn.countVn(jp.getData().get(i), jp.getYears()
 									.get(i), jp.getR().get(i));
@@ -217,13 +216,13 @@ public class AppFrame {
 						vn.saveWorkbook(textFieldSaveToFile.getText());
 
 						JOptionPane.showMessageDialog(frame,
-								"Расчет успешно выполнен." + "\n"
-										+ "Результаты сохранены в файле: "
+								"Р Р°СЃС‡РµС‚ СѓСЃРїРµС€РЅРѕ РІС‹РїРѕР»РЅРµРЅ." + "\n"
+										+ "Р РµР·СѓР»СЊС‚Р°С‚С‹ СЃРѕС…СЂР°РЅРµРЅС‹ РІ С„Р°Р№Р»Рµ: "
 										+ "\n" + textFieldSaveToFile.getText());
 						resetFields();
 					} catch (NotEnoughtDataException e) {
 						JOptionPane.showMessageDialog(frame, e.getMessage(),
-								"Ошибка в исходных данных.",
+								"РћС€РёР±РєР° РІ РёСЃС…РѕРґРЅС‹С… РґР°РЅРЅС‹С….",
 								JOptionPane.ERROR_MESSAGE);
 					}
 
@@ -231,8 +230,8 @@ public class AppFrame {
 
 			} else {
 				JOptionPane.showMessageDialog(frame,
-						"Выберите файлы исходных и выходных данных.",
-						"Внимание", JOptionPane.WARNING_MESSAGE);
+						"Р’С‹Р±РµСЂРёС‚Рµ С„Р°Р№Р»С‹ РёСЃС…РѕРґРЅС‹С… Рё РІС‹С…РѕРґРЅС‹С… РґР°РЅРЅС‹С….",
+						"Р’РЅРёРјР°РЅРёРµ", JOptionPane.WARNING_MESSAGE);
 			}
 		}
 	}
@@ -264,7 +263,7 @@ public class AppFrame {
 			}
 
 			int returnVal = fileChooser
-					.showDialog(fileChooser, "Выберите файл");
+					.showDialog(fileChooser, "Р’С‹Р±РµСЂРёС‚Рµ С„Р°Р№Р»");
 
 			if (returnVal == JFileChooser.APPROVE_OPTION) {
 
@@ -282,8 +281,6 @@ public class AppFrame {
 
 			// Reset the file chooser for the next time it's shown.
 			// fc.setSelectedFile(null);
-
 		}
-
 	}
 }

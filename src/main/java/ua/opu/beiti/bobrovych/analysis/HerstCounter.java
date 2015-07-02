@@ -4,9 +4,6 @@ import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-
-
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
@@ -32,7 +29,7 @@ public class HerstCounter extends Counter {
 		setCurrentSheet(sheetName);
 		currentRow = 10;
 		Row row = getCurrentSheet().createRow(++currentRow);
-		row.createCell(0).setCellValue("Расчеты:");
+		row.createCell(0).setCellValue("Р Р°СЃС‡РµС‚С‹:");
 		divideIntoGroups(32, inputData);
 		divideIntoGroups(16, inputData);
 		divideIntoGroups(8, inputData);
@@ -90,7 +87,7 @@ public class HerstCounter extends Counter {
 
 		Row row = getCurrentSheet().createRow(++currentRow);
 		row.createCell(1).setCellValue(
-				"Расчет для " + n + " групп по " + elements + " элементов");
+				"Р Р°СЃС‡РµС‚С‹ РґР»СЏ " + n + " РіСЂСѓРїРї РїРѕ " + elements + " СЌР»РµРјРµРЅС‚РѕРІ");
 		row = getCurrentSheet().createRow(++currentRow);
 		CellStyle style = getWorkbook().createCellStyle();
 		style.setDataFormat(getWorkbook().createDataFormat().getFormat(
@@ -115,7 +112,7 @@ public class HerstCounter extends Counter {
 		}
 		currentRow += (elements + 1);
 		row = getCurrentSheet().createRow(currentRow);
-		row.createCell(0).setCellValue("Среднее");
+		row.createCell(0).setCellValue("РЎСЂРµРґРЅРµРµ");
 		for (int j = 0; j < groups; j++) {
 			cell = row.createCell(j + 1);
 			cell.setCellStyle(style);
@@ -123,7 +120,7 @@ public class HerstCounter extends Counter {
 		}
 
 		row = getCurrentSheet().createRow(++currentRow);
-		row.createCell(0).setCellValue("Стандартное отклонение");
+		row.createCell(0).setCellValue("РЎС‚Р°РЅРґР°СЂС‚РЅРѕРµ РѕС‚РєР»РѕРЅРµРЅРёРµ");
 		getCurrentSheet().autoSizeColumn(0);
 		for (int i = 0; i < elements; i++) {
 			for (int j = 0; j < groups; j++) {
@@ -134,7 +131,7 @@ public class HerstCounter extends Counter {
 		}
 		currentRow += 2;
 		row = getCurrentSheet().createRow(currentRow);
-		row.createCell(1).setCellValue("Временной ряд накопленныx отклонений");
+		row.createCell(1).setCellValue("Р’СЂРµРјРµРЅРЅРѕР№ СЂСЏРґ РЅР°РєРѕРїР»РµРЅРЅС‹С… РѕС‚РєР»РѕРЅРµРЅРёР№");
 		row = getCurrentSheet().createRow(++currentRow);
 		row.createCell(0).setCellValue("k");
 		for (int i = 1; i < groups + 1; i++) {
@@ -180,7 +177,7 @@ public class HerstCounter extends Counter {
 			cell.setCellValue(min[j]);
 		}
 		row = getCurrentSheet().createRow(++currentRow);
-		row.createCell(0).setCellValue("Диапазон");
+		row.createCell(0).setCellValue("Р”РёР°РїР°Р·РѕРЅ");
 		for (int j = 0; j < groups; j++) {
 			cell = row.createCell(j + 1);
 			cell.setCellStyle(style);
@@ -203,7 +200,7 @@ public class HerstCounter extends Counter {
 		cell.setCellStyle(style);
 		cell.setCellValue(sumRS);
 		row = getCurrentSheet().createRow(++currentRow);
-		row.createCell(0).setCellValue("Для n = " + elements);
+		row.createCell(0).setCellValue("Р”Р»СЏ n = " + elements);
 		row.createCell(1).setCellValue("R/S=");
 		rSGroup = 1.0 / groups * sumRS;
 		cell = row.createCell(2);
@@ -216,7 +213,7 @@ public class HerstCounter extends Counter {
 	public double countRegression() {
 		currentRow = 0;
 		Row row = getCurrentSheet().createRow(currentRow);
-		row.createCell(0).setCellValue("Регрессия");
+		row.createCell(0).setCellValue("Htuhtccbz");
 		row = getCurrentSheet().createRow(++currentRow);
 		CellStyle style = getWorkbook().createCellStyle();
 		style.setDataFormat(getWorkbook().createDataFormat().getFormat(

@@ -30,7 +30,7 @@ public class VNCounter extends Counter {
 
 		row = getCurrentSheet().createRow(currentRow++);
 		double elemAvg = elemSum / inputData.size();
-		row.createCell(0).setCellValue("Среднее");
+		row.createCell(0).setCellValue("РЎСЂРµРґРЅРµРµ");
 		Cell cell = row.createCell(1);
 		cell.setCellStyle(style2);
 		cell.setCellValue(elemAvg);
@@ -76,7 +76,7 @@ public class VNCounter extends Counter {
 		cell = row.createCell(3);
 		cell.setCellStyle(style2);
 		cell.setCellValue(min);
-		row.createCell(0).setCellValue("Станд. откл.");
+		row.createCell(0).setCellValue("РЎС‚Р°РЅРґ. РѕС‚РєР».");
 		getCurrentSheet().autoSizeColumn(0);
 		cell = row.createCell(1);
 		cell.setCellStyle(style2);
@@ -89,7 +89,7 @@ public class VNCounter extends Counter {
 		cell.setCellValue(rMaxMin);
 		row = getCurrentSheet().getRow(0);
 		getCurrentSheet().autoSizeColumn(3);
-		row.createCell(3).setCellValue("Накопленная");
+		row.createCell(3).setCellValue("РќР°РєРѕРїР»РµРЅРЅР°СЏ");
 		getCurrentSheet().autoSizeColumn(3);
 		row = getCurrentSheet().getRow(0);
 		row.createCell(8).setCellValue(" n =");
@@ -111,7 +111,7 @@ public class VNCounter extends Counter {
 		row.createCell(8).setCellValue(" q =");
 		row.createCell(9).setCellValue(q);
 		row = getCurrentSheet().getRow(0);
-		row.createCell(4).setCellValue("Сумма произведений");
+		row.createCell(4).setCellValue("РЎСѓРјРјР° РїСЂРѕРёР·РІРµРґРµРЅРёР№");
 		getCurrentSheet().autoSizeColumn(4);
 		double[] sum = new double[q];
 		int top = 1;
@@ -132,7 +132,7 @@ public class VNCounter extends Counter {
 		row = getCurrentSheet().getRow(0);
 		row.createCell(5).setCellValue("j");
 		row.createCell(6).setCellValue("w");
-		row.createCell(7).setCellValue("w*СуммаПроизв");
+		row.createCell(7).setCellValue("w*РЎСѓРјРјР°РџСЂРѕРёР·РІ");
 		getCurrentSheet().autoSizeColumn(7);
 		double[] w = new double[q];
 		double[] wSum = new double[q];

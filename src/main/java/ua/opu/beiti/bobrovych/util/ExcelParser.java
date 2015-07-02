@@ -55,7 +55,7 @@ public class ExcelParser {
 		return (ArrayList<String>) years.clone();
 	}
 
-	public void parseExcel(String url) throws NotEnoughtDataException,
+	public void parseExcelForHerst(String url) throws NotEnoughtDataException,
 			TooMuchDataException, BlankCellException {
 		FileInputStream file = null;
 		try {
@@ -65,10 +65,10 @@ public class ExcelParser {
 			int rowNumbers = sheet.getLastRowNum() - sheet.getFirstRowNum();
 
 			if (rowNumbers < 256) {
-				throw new NotEnoughtDataException("Недостаточно данных.");
+				throw new NotEnoughtDataException("РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РґР°РЅРЅС‹С….");
 
 			} else if (rowNumbers > 256) {
-				throw new TooMuchDataException("Слишком много данных.");
+				throw new TooMuchDataException("РЎР»РёС€РєРѕРј РјРЅРѕРіРѕ РґР°РЅРЅС‹С….");
 
 			} else {
 				Iterator<Row> rowIterator = sheet.iterator();
@@ -97,8 +97,8 @@ public class ExcelParser {
 								inputData[j][i - 1] = cell
 										.getNumericCellValue();
 							} else {
-								throw new BlankCellException("Ячейка (" + i
-										+ "," + j + ") пуста.");
+								throw new BlankCellException("РЇС‡РµР№РєР° (" + i
+										+ "," + j + ") РїСѓСЃС‚Р°СЏ.");
 							}
 						}
 						j++;
@@ -107,17 +107,17 @@ public class ExcelParser {
 				}
 			}
 		} catch (FileNotFoundException e) {
-			JOptionPane.showMessageDialog(new JFrame(), url, "Файл не найден",
+			JOptionPane.showMessageDialog(new JFrame(), url, "Р¤Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ",
 					JOptionPane.ERROR_MESSAGE);
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(),
-					"Ошибка", JOptionPane.ERROR_MESSAGE);
+					"РћС€РёР±РєР°", JOptionPane.ERROR_MESSAGE);
 		} finally {
 			try {
 				file.close();
 			} catch (IOException e) {
 				JOptionPane.showMessageDialog(new JFrame(), e.getMessage(),
-						"Ошибка", JOptionPane.ERROR_MESSAGE);
+						"РћС€РёР±РєР°", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}
@@ -173,27 +173,27 @@ public class ExcelParser {
 				}
 				if (r.size() != years.size()) {
 					throw new NotEnoughtDataException(
-							"Количество столбцов на первом и втором листе "
-									+ "\n" + "должно совпадать.");
+							"РљРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚РѕР»Р±С†РѕРІ РЅР° РїРµСЂРІРѕРј Рё РІС‚РѕСЂРѕРј Р»РёСЃС‚Рµ "
+									+ "\n" + "РґРѕР»Р¶РЅРѕ СЃРѕРІРїР°РґР°С‚СЊ.");
 				}
 			} else {
 				throw new NotEnoughtDataException(
-						"Отсутсвует лист с коэффициентами автокорелляции.");
+						"РћС‚СЃСѓС‚СЃС‚РІСѓРµС‚ Р»РёСЃС‚ СЃ РєРѕСЌС„С„РёС†РёРµРЅС‚Р°РјРё Р°РІС‚РѕРєРѕСЂСЂРµР»СЏС†РёРё.");
 			}
 
 		} catch (FileNotFoundException e) {
-			JOptionPane.showMessageDialog(new JFrame(), url, "Файл не найден",
+			JOptionPane.showMessageDialog(new JFrame(), url, "Р¤Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ",
 					JOptionPane.ERROR_MESSAGE);
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(),
-					"Ошибка", JOptionPane.ERROR_MESSAGE);
+					"РћС€РёР±РєР°", JOptionPane.ERROR_MESSAGE);
 		} finally {
 			try {
 				file.close();
 			} catch (IOException e) {
 
 				JOptionPane.showMessageDialog(new JFrame(), e.getMessage(),
-						"Ошибка", JOptionPane.ERROR_MESSAGE);
+						"РћС€РёР±РєР°", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}

@@ -79,17 +79,17 @@ public class Counter implements ExcelManager {
 			System.out.println("Excel " + url + " written successfully..");
 		} catch (FileNotFoundException e) {
 			JOptionPane.showMessageDialog(new JFrame(), url + "\n"
-					+ "Файл занят другим процессом.",
-					"Ошибка в записи данных", JOptionPane.ERROR_MESSAGE);
+					+ "Р¤Р°Р№Р» Р·Р°РЅСЏС‚ РґСЂСѓРіРёРј РїСЂРѕС†РµСЃСЃРѕРј.",
+					"РћС€РёР±РєР° Р·Р°РїРёСЃРё РґР°РЅРЅС‹С…", JOptionPane.ERROR_MESSAGE);
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(),
-					"Ошибка", JOptionPane.ERROR_MESSAGE);
+					"РћС€РёР±РєР°", JOptionPane.ERROR_MESSAGE);
 		} finally {
 			try {
 				out.close();
 			} catch (IOException e) {
 				JOptionPane.showMessageDialog(new JFrame(), e.getMessage(),
-						"Ошибка", JOptionPane.ERROR_MESSAGE);
+						"РћС€РёР±РєР°", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}
